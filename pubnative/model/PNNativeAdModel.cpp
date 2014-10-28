@@ -38,15 +38,15 @@ static std::string PNNATIVE_PORTRAIT_BANNER_URL = "portrait_banner_url";
 
 PNNativeAdModel::PNNativeAdModel(void)
 : PNModel()
-, click_url("")
+, click_url()
 , points(0)
-, cta_text("")
-, type("")
-, title("")
-, description("")
-, icon_url("")
-, banner_url("")
-, portrait_banner_url("")
+, cta_text()
+, type()
+, title()
+, description()
+, icon_url()
+, banner_url()
+, portrait_banner_url()
 , _requestCounter(0)
 {
     icon_url_image = NULL;

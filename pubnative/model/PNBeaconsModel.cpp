@@ -66,7 +66,7 @@ PNBeaconsModel* PNBeaconsModel::createWithJSON(string json)
 
 string PNBeaconsModel::getBeacon(string type)
 {
-    string result = "";
+    string result = string();
     CCString *value = (CCString*)beacons->objectForKey(type);
     if(value != NULL)
     {
@@ -78,17 +78,22 @@ string PNBeaconsModel::getBeacon(string type)
 void PNBeaconsModel::confirmBeacon(std::string type)
 {
     string beaconURL = getBeacon(type);
-    
-    CCHttpRequest *request = new CCHttpRequest();
-    request->setUrl(beaconURL.c_str());
-    request->setRequestType(CCHttpRequest::kHttpGet);
-    request->setResponseCallback(this, httpresponse_selector(PNBeaconsModel::onBeaconConfirmed));
-    CCString *typeString = CCStringMake(type);
-    typeString->retain();
-    request->setUserData(typeString);
-    
-    CCHttpClient::getInstance()->send(request);
-    request->release();
+    if(beaconURL.empty() == false)
+    {
+        CCHttpRequest *request = new CCHttpRequest();
+        request->setUrl(beaconURL.c_str());
+        request->setRequestType(CCHttpRequest::kHttpGet);
+        request->setResponseCallback(this, httpresponse_selector(PNBeaconsModel::onBeaconConfirmed));
+        CCString *typeString = CCStringMake(type);
+        typeString->retain();
+        request->setUserData(typeString);
+        CCHttpClient::getInstance()->send(request);
+        request->release();
+    }
+    else
+    {
+        CCLOG("PNBeaconsModel - Beacon error - beacon doesn't exist");
+    }
 }
 
 void PNBeaconsModel::onBeaconConfirmed(cocos2d::extension::CCHttpClient* client, cocos2d::extension::CCHttpResponse* response)
@@ -100,7 +105,7 @@ void PNBeaconsModel::onBeaconConfirmed(cocos2d::extension::CCHttpClient* client,
     }
     
     CCString *imageName = (CCString*)response->getHttpRequest()->getUserData();
-    std::string nameString = imageName->m_sString;
+    string nameString = imageName->m_sString;
     imageName->release();
     
     if (!response->isSucceed())

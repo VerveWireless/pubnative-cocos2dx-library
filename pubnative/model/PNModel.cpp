@@ -77,7 +77,7 @@ rapidjson::Document PNModel::parseJson(std::string json)
 
 string PNModel::getJSON(rapidjson::Value &value)
 {
-    string result = "";
+    string result = string();
     
     rapidjson::StringBuffer buffer;
     rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
@@ -110,7 +110,7 @@ double PNModel::processValueDouble (rapidjson::Value &value)
 
 string PNModel::processValueString (rapidjson::Value &value)
 {
-    string result = "";
+    string result = string();
     if (!value.IsNull() && value.IsString())
     {
         result = value.GetString();
@@ -151,25 +151,30 @@ void PNModel::invokeCallback(bool success)
 
 void PNModel::downloadImage(std::string url, std::string name)
 {
-    CCHttpRequest *request = new CCHttpRequest();
-    request->setUrl(url.c_str());
-    request->setRequestType(CCHttpRequest::kHttpGet);
-    request->setResponseCallback(this, httpresponse_selector(PNModel::onImageRequestFinished));
-    
     CCString *nameString = CCStringMake(name);
     nameString->retain();
-    request->setUserData(nameString);
     
-    CCHttpClient::getInstance()->send(request);
-    
-    request->release();
+    if (url.empty() == false)
+    {
+        CCHttpRequest *request = new CCHttpRequest();
+        request->setUrl(url.c_str());
+        request->setRequestType(CCHttpRequest::kHttpGet);
+        request->setResponseCallback(this, httpresponse_selector(PNModel::onImageRequestFinished));
+        request->setUserData(nameString);
+        CCHttpClient::getInstance()->send(request);
+        request->release();
+    }
+    else
+    {
+        onImageDownloaded(NULL, name);
+    }
 }
 
 void PNModel::onImageRequestFinished(CCHttpClient* client, CCHttpResponse* response)
 {
     if (!response)
     {
-        onImageDownloaded(NULL, "");
+        onImageDownloaded(NULL, string());
         return;
     }
     
