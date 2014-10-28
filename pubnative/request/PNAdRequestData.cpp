@@ -136,7 +136,7 @@ void PNAdRequestData::setRequestParameter(std::string key, std::string value)
 
 std::string PNAdRequestData::parametersString(std::string api)
 {
-    CCString *result = CCStringMake("");
+    CCString *result = CCStringMake(string());
     
     if(_parameters != NULL && isValid())
     {

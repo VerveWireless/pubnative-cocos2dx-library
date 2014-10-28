@@ -91,7 +91,7 @@ void PNAdRequest::setReadyCallback(CCObject *pTarget, Pubnative_Ready_Callback p
 
 void PNAdRequest::requestAds(void)
 {
-    std::string api = "";
+    std::string api = string();
     
     switch (_api)
     {
@@ -101,15 +101,20 @@ void PNAdRequest::requestAds(void)
     
     std::string url = _requestData->parametersString(api);
     
-    CCHttpRequest *request = new CCHttpRequest();
-    request->setUrl(url.c_str());
-    request->setRequestType(CCHttpRequest::kHttpGet);
-    request->setResponseCallback(this, httpresponse_selector(PNAdRequest::onAdRequestFinished));
-    request->setUserData(CCStringMake(api));
-    
-    CCHttpClient::getInstance()->send(request);
-    
-    request->release();
+    if(url.empty() == false)
+    {
+        CCHttpRequest *request = new CCHttpRequest();
+        request->setUrl(url.c_str());
+        request->setRequestType(CCHttpRequest::kHttpGet);
+        request->setResponseCallback(this, httpresponse_selector(PNAdRequest::onAdRequestFinished));
+        request->setUserData(CCStringMake(api));
+        CCHttpClient::getInstance()->send(request);
+        request->release();
+    }
+    else
+    {
+        invokeFailCallback("PNAdRequest::requestAds - URL Error, cannot make request");
+    }
 }
 
 void PNAdRequest::invokeFailCallback(string description)
@@ -140,7 +145,7 @@ void PNAdRequest::onAdRequestFinished(CCHttpClient* client, CCHttpResponse* resp
     
     if (!response->isSucceed())
     {
-        invokeFailCallback("Connection to pubnative servers failed");
+        invokeFailCallback("PNAdRequest::onAdRequestFinished - Connection to pubnative servers failed");
         return;
     }
     
@@ -150,7 +155,7 @@ void PNAdRequest::onAdRequestFinished(CCHttpClient* client, CCHttpResponse* resp
     {
         if (!response->isSucceed())
         {
-            invokeFailCallback("Network");
+            invokeFailCallback("PNAdRequest::onAdRequestFinished - Network");
             return;
         }
         
@@ -163,7 +168,7 @@ void PNAdRequest::onAdRequestFinished(CCHttpClient* client, CCHttpResponse* resp
         document.ParseStream<rapidjson::kParseDefaultFlags>(stream);
         if(document.HasParseError())
         {
-            invokeFailCallback(string("Parse errors: ") + string(document.GetParseError()));
+            invokeFailCallback("PNAdRequest::onAdRequestFinished - Parse errors: " + string(document.GetParseError()));
         }
         else
         {
@@ -189,17 +194,17 @@ void PNAdRequest::onAdRequestFinished(CCHttpClient* client, CCHttpResponse* resp
             {
                 // error in request
                 string error_message = document["error_message"].GetString();
-                invokeFailCallback(string("Request error: ") + error_message.c_str());
+                invokeFailCallback("PNAdRequest::onAdRequestFinished - Request error: " + error_message);
             }
             else
             {
                 // unknown error
-                invokeFailCallback("Unkown error");
+                invokeFailCallback("PNAdRequest::onAdRequestFinished - Unkown error");
             }
         }
     }
     else
     {
-        invokeFailCallback("Network status code != 200");
+        invokeFailCallback("PNAdRequest::onAdRequestFinished - Network status code != 200");
     }
 }

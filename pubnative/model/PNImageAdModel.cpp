@@ -43,11 +43,11 @@ static string PNIMAGEADMODEL_IMAGE_URL = "image_url";
 
 PNImageAdModel::PNImageAdModel(void)
 : PNModel()
-, type("")
+, type()
 , width(0)
 , height(0)
-, image_url("")
-, click_url("")
+, image_url()
+, click_url()
 {
     //Constructor
     image_url_image = NULL;
