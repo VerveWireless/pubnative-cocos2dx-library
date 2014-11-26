@@ -26,14 +26,14 @@ You would need to import the needed classes for your request
 For native API request:
 ```cpp
 #import "PNNativeRequest.h"
-#import "PNNativeModel.h"
+#import "PNNativeAdModel.h"
 ```
 
 For image API request:
 
 ```cpp
 #import "PNImageRequest.h"
-#import "PNImageModel.h"
+#import "PNImageAdModel.h"
 ```
 
 All classes are described under the following namespace
@@ -49,7 +49,7 @@ You need to create and fill a request for the native or image API. You could use
 Remember that you should set URLParameters as described in the [pubnative wiki](https://pubnative.atlassian.net/wiki/display/PUB/API+Documentation#APIDocumentation-3.Request)
 
 ```cpp
-PNNativeRequest *request = new cocos2d::pubnative::PNNativeRequest();
+PNNativeRequest *request = cocos2d::pubnative::PNNativeRequest::create();
 request->setURLParameter("app_token", <PUBNATIVE_APP_TOKEN>);
 request->setURLParameter("bundle_id", <APP_BUNDLE_ID>);
 request->setURLParameter("os", <OS>);
@@ -57,7 +57,6 @@ request->setURLParameter("os_version", <OS_VERSION>);
 request->setURLParameter("device_model", <DEVICE_MODEL>);
 request->setReadyCallback(<CALLBACK_TARGET>, pubnative_callback_ready(<YOUR_CLASS>::<REQUEST_READY_CALLBACK>));
 request->requestAds();
-request->release();
 ```
 
 ### Ad Load

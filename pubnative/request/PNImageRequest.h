@@ -38,11 +38,14 @@ namespace cocos2d
         class PNImageRequest : public PNAdRequest
         {
         public:
-            PNImageRequest(void);
-            ~PNImageRequest(void);
+            PNImageRequest* create();
             
         protected:
             PNModel* parseAd(std::string adJSON);
+            
+        private:
+            PNImageRequest(void);
+            ~PNImageRequest(void);
         };
     }
 }

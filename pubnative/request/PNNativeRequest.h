@@ -38,12 +38,14 @@ namespace cocos2d
         class PNNativeRequest : public PNAdRequest
         {
         public:
+            static PNNativeRequest* create();
             
-            PNNativeRequest(void);
-            ~PNNativeRequest(void);
         protected:
             PNModel* parseAd(std::string adJSON);
+            
         private:
+            PNNativeRequest(void);
+            ~PNNativeRequest(void);
         };
     }
 }

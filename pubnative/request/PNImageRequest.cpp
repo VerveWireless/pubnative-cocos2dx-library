@@ -30,6 +30,13 @@ using namespace std;
 using namespace cocos2d;
 using namespace cocos2d::pubnative;
 
+PNImageRequest* PNImageRequest::create()
+{
+    PNImageRequest *pRequest = new PNImageRequest();
+    pRequest->autorelease();
+    return pRequest;
+}
+
 PNImageRequest::PNImageRequest(void) : PNAdRequest()
 {
     //Constructor
