@@ -45,15 +45,15 @@ namespace cocos2d
         {
             
         public:
-            PNAdRequest(void);
-            ~PNAdRequest(void);
-            
             CCArray* getAds();
             void setReadyCallback(CCObject *pTarget, Pubnative_Ready_Callback pSelector);
             void setURLParameter(std::string key, std::string value);
             void requestAds(void);
             
         protected:
+            PNAdRequest(void);
+            ~PNAdRequest(void);
+            
             typedef enum
             {
                 PNAdRequestType_Native,

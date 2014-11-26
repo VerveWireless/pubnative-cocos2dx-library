@@ -120,6 +120,7 @@ void PNAdRequest::requestAds(void)
 void PNAdRequest::invokeFailCallback(string description)
 {
     string errorString = "Pubnative ERROR - " + description;
+    CCLOG("%s", errorString.c_str());
     invokeCallback(false);
 }
 

@@ -41,6 +41,13 @@ PNNativeRequest::~PNNativeRequest()
     //Destructor
 }
 
+PNNativeRequest* PNNativeRequest::create()
+{
+    PNNativeRequest *pRequest = new PNNativeRequest();
+    pRequest->autorelease();
+    return pRequest;
+}
+
 PNModel* PNNativeRequest::parseAd(string adJSON)
 {
     return PNNativeAdModel::createWithJSON(adJSON);
