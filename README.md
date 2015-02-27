@@ -8,7 +8,8 @@ Pubnative library is a collection of Open Source tools, to implement API based n
 
 ## Requisites
 
-* Cocos2D-X v2.2.5 or greater
+* Cocos2D-X v2.X
+* **Warning**: Still not compatible with Cocos2D-X 3.X
  
 ## Install
 
@@ -17,23 +18,49 @@ Pubnative library is a collection of Open Source tools, to implement API based n
 1. Download the Pubnative repository
 2. Copy the pubnative/ folder into your project
 
+### Android
+
+Once you imported the files you should edit the Android.mk file
+
+* **please note that you should point wherever you have imported your pubnative copy
+
+```text
+LOCAL_SRC_FILES := <YOUR_FILES> \
+                   ../../Classes/pubnative/model/PNAppDetailsModel.cpp \
+                   ../../Classes/pubnative/model/PNBeaconsModel.cpp \
+                   ../../Classes/pubnative/model/PNImageAdModel.cpp \
+                   ../../Classes/pubnative/model/PNModel.cpp \
+                   ../../Classes/pubnative/model/PNNativeAdModel.cpp \
+                   ../../Classes/pubnative/request/PNAdRequest.cpp \
+                   ../../Classes/pubnative/request/PNAdRequestData.cpp \
+                   ../../Classes/pubnative/request/PNImageRequest.cpp \
+                   ../../Classes/pubnative/request/PNNativeRequest.cpp
+```
+
+```text
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../Classes/pubnative/model
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../Classes/pubnative/request
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../../extensions/CocoStudio/Json/rapidjson
+```
+
 ## Usage
 
-### Import
+### Include depending on target API
 
 You would need to import the needed classes for your request
 
 For native API request:
+
 ```cpp
-#import "PNNativeRequest.h"
-#import "PNNativeAdModel.h"
+#include "PNNativeRequest.h"
+#include "PNNativeAdModel.h"
 ```
 
 For image API request:
 
 ```cpp
-#import "PNImageRequest.h"
-#import "PNImageAdModel.h"
+#include "PNImageRequest.h"
+#include "PNImageAdModel.h"
 ```
 
 All classes are described under the following namespace
@@ -48,6 +75,8 @@ You need to create and fill a request for the native or image API. You could use
 
 Remember that you should set URLParameters as described in the [pubnative wiki](https://pubnative.atlassian.net/wiki/display/PUB/API+Documentation#APIDocumentation-3.Request)
 
+**This will download raw data from the API**
+
 ```cpp
 PNNativeRequest *request = cocos2d::pubnative::PNNativeRequest::create();
 request->setURLParameter("app_token", <PUBNATIVE_APP_TOKEN>);
@@ -61,7 +90,9 @@ request->requestAds();
 
 ### Ad Load
 
-You need to load manually each downlaoded ad, so you can control when the images are downloaded from the URL into `CCImage`. This step is the same for both requests `PNNativeRequest` or `PNImageRequest`.
+You need to load manually each downloded ad, so you can control when the images are downloaded from the URL into `CCImage`. This step is the same for both requests `PNNativeRequest` or `PNImageRequest`.
+
+**This will load the resouces from the model into Cocos2D types**
 
 ```cpp
 void YOUR_CLASS::REQUEST_READY_CALLBACK(cocos2d::pubnative::PNAdRequest *request, bool success)
