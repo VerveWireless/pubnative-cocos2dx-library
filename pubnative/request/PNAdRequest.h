@@ -56,9 +56,9 @@ namespace cocos2d
             
             typedef enum
             {
-                PNAdRequestType_Native,
-                PNAdRequestType_Image
+                PNAdRequestType_Native
             }PNAdRequestType;
+            
             PNAdRequestType _api;
             CCArray         *_ads;
             

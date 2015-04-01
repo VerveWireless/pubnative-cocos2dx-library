@@ -263,12 +263,10 @@
 		D4EF94A015BD2D9800D803EB /* Icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EF949F15BD2D9800D803EB /* Icon-144.png */; };
 		D5ACF0781A9F64BE0062106A /* PNAppDetailsModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5ACF0651A9F64BE0062106A /* PNAppDetailsModel.cpp */; };
 		D5ACF0791A9F64BE0062106A /* PNBeaconsModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5ACF0671A9F64BE0062106A /* PNBeaconsModel.cpp */; };
-		D5ACF07A1A9F64BE0062106A /* PNImageAdModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5ACF0691A9F64BE0062106A /* PNImageAdModel.cpp */; };
 		D5ACF07B1A9F64BE0062106A /* PNModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5ACF06B1A9F64BE0062106A /* PNModel.cpp */; };
 		D5ACF07C1A9F64BE0062106A /* PNNativeAdModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5ACF06D1A9F64BE0062106A /* PNNativeAdModel.cpp */; };
 		D5ACF07D1A9F64BE0062106A /* PNAdRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5ACF0701A9F64BE0062106A /* PNAdRequest.cpp */; };
 		D5ACF07E1A9F64BE0062106A /* PNAdRequestData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5ACF0721A9F64BE0062106A /* PNAdRequestData.cpp */; };
-		D5ACF07F1A9F64BE0062106A /* PNImageRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5ACF0741A9F64BE0062106A /* PNImageRequest.cpp */; };
 		D5ACF0801A9F64BE0062106A /* PNNativeRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5ACF0761A9F64BE0062106A /* PNNativeRequest.cpp */; };
 /* End PBXBuildFile section */
 
@@ -810,8 +808,6 @@
 		D5ACF0661A9F64BE0062106A /* PNAppDetailsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNAppDetailsModel.h; sourceTree = "<group>"; };
 		D5ACF0671A9F64BE0062106A /* PNBeaconsModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PNBeaconsModel.cpp; sourceTree = "<group>"; };
 		D5ACF0681A9F64BE0062106A /* PNBeaconsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNBeaconsModel.h; sourceTree = "<group>"; };
-		D5ACF0691A9F64BE0062106A /* PNImageAdModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PNImageAdModel.cpp; sourceTree = "<group>"; };
-		D5ACF06A1A9F64BE0062106A /* PNImageAdModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNImageAdModel.h; sourceTree = "<group>"; };
 		D5ACF06B1A9F64BE0062106A /* PNModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PNModel.cpp; sourceTree = "<group>"; };
 		D5ACF06C1A9F64BE0062106A /* PNModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNModel.h; sourceTree = "<group>"; };
 		D5ACF06D1A9F64BE0062106A /* PNNativeAdModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PNNativeAdModel.cpp; sourceTree = "<group>"; };
@@ -820,8 +816,6 @@
 		D5ACF0711A9F64BE0062106A /* PNAdRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNAdRequest.h; sourceTree = "<group>"; };
 		D5ACF0721A9F64BE0062106A /* PNAdRequestData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PNAdRequestData.cpp; sourceTree = "<group>"; };
 		D5ACF0731A9F64BE0062106A /* PNAdRequestData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNAdRequestData.h; sourceTree = "<group>"; };
-		D5ACF0741A9F64BE0062106A /* PNImageRequest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PNImageRequest.cpp; sourceTree = "<group>"; };
-		D5ACF0751A9F64BE0062106A /* PNImageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNImageRequest.h; sourceTree = "<group>"; };
 		D5ACF0761A9F64BE0062106A /* PNNativeRequest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PNNativeRequest.cpp; sourceTree = "<group>"; };
 		D5ACF0771A9F64BE0062106A /* PNNativeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNNativeRequest.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1990,8 +1984,6 @@
 				D5ACF0661A9F64BE0062106A /* PNAppDetailsModel.h */,
 				D5ACF0671A9F64BE0062106A /* PNBeaconsModel.cpp */,
 				D5ACF0681A9F64BE0062106A /* PNBeaconsModel.h */,
-				D5ACF0691A9F64BE0062106A /* PNImageAdModel.cpp */,
-				D5ACF06A1A9F64BE0062106A /* PNImageAdModel.h */,
 				D5ACF06B1A9F64BE0062106A /* PNModel.cpp */,
 				D5ACF06C1A9F64BE0062106A /* PNModel.h */,
 				D5ACF06D1A9F64BE0062106A /* PNNativeAdModel.cpp */,
@@ -2007,8 +1999,6 @@
 				D5ACF0711A9F64BE0062106A /* PNAdRequest.h */,
 				D5ACF0721A9F64BE0062106A /* PNAdRequestData.cpp */,
 				D5ACF0731A9F64BE0062106A /* PNAdRequestData.h */,
-				D5ACF0741A9F64BE0062106A /* PNImageRequest.cpp */,
-				D5ACF0751A9F64BE0062106A /* PNImageRequest.h */,
 				D5ACF0761A9F64BE0062106A /* PNNativeRequest.cpp */,
 				D5ACF0771A9F64BE0062106A /* PNNativeRequest.h */,
 			);
@@ -2201,7 +2191,6 @@
 				15A3D9A61682F7F9002FB0C5 /* cpBody.c in Sources */,
 				15C0B580196D412F007F909D /* UISlider.cpp in Sources */,
 				15A3D9A71682F7F9002FB0C5 /* cpCollision.c in Sources */,
-				D5ACF07A1A9F64BE0062106A /* PNImageAdModel.cpp in Sources */,
 				15C0B573196D412F007F909D /* UIHelper.cpp in Sources */,
 				15C0B55A196D412F007F909D /* CCBone.cpp in Sources */,
 				15A3D9A81682F7F9002FB0C5 /* cpHashSet.c in Sources */,
@@ -2264,7 +2253,6 @@
 				15C0B55E196D412F007F909D /* CCDisplayFactory.cpp in Sources */,
 				15A3DA4D1682F826002FB0C5 /* CCControlPotentiometer.cpp in Sources */,
 				15A3DA4E1682F826002FB0C5 /* CCControlSaturationBrightnessPicker.cpp in Sources */,
-				D5ACF07F1A9F64BE0062106A /* PNImageRequest.cpp in Sources */,
 				15A3DA4F1682F826002FB0C5 /* CCControlSlider.cpp in Sources */,
 				15C0B591196D412F007F909D /* SliderReader.cpp in Sources */,
 				15C0B592196D412F007F909D /* TextFieldReader.cpp in Sources */,

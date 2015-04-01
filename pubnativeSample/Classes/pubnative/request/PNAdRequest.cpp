@@ -25,7 +25,6 @@
 
 #include "PNAdRequest.h"
 #include "PNNativeAdModel.h"
-#include "PNImageAdModel.h"
 #include "document.h"
 #include "stringbuffer.h"
 #include "writer.h"
@@ -36,7 +35,6 @@ using namespace cocos2d::extension;
 using namespace cocos2d::pubnative;
 
 string const kPNAdRequestApiNative    = "native";
-string const kPNAdRequestApiImage     = "image";
 
 PNAdRequest::PNAdRequest()
 : CCObject()
@@ -96,7 +94,6 @@ void PNAdRequest::requestAds(void)
     switch (_api)
     {
         case PNAdRequestType_Native:  api = kPNAdRequestApiNative; break;
-        case PNAdRequestType_Image:   api = kPNAdRequestApiImage;  break;
     }
     
     std::string url = _requestData->parametersString(api);
