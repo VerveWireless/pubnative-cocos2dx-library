@@ -6,18 +6,38 @@ PubNative is an API-based publisher platform dedicated to native advertising whi
 
 Pubnative library is a collection of Open Source tools, to implement API based native ads in Unity.
 
+## Contents
+
+* [Requisites](#requisites)
+* [Install](#install)
+    * [Sources](#install_sources)
+    * [Android](#install_android)
+    * [iOS](#install_ios)
+* [Usage](#usage)
+    * [Request](#usage_request)
+    * [Load](#usage_load)
+    * [Use](#usage_use) 
+* [Misc](#misc)
+    * [Author](#misc_author)
+    * [License](#misc_license)
+    * [Contribution](#misc_contribution)
+
+<a name='requisites'></a>
 ## Requisites
 
 * Cocos2D-X v2.X
 * **Warning**: Still not compatible with Cocos2D-X 3.X
- 
+
+<a name='install'></a> 
 ## Install
 
+<a name='install_sources'></a> 
 ### Source files
 
 1. Download the Pubnative repository
 2. Copy the pubnative/ folder into your project
 
+<a name='install_android'></a>
 ### Android
 
 Once you imported the files you should edit the Android.mk file
@@ -28,12 +48,10 @@ Once you imported the files you should edit the Android.mk file
 LOCAL_SRC_FILES := <YOUR_FILES> \
                    ../../Classes/pubnative/model/PNAppDetailsModel.cpp \
                    ../../Classes/pubnative/model/PNBeaconsModel.cpp \
-                   ../../Classes/pubnative/model/PNImageAdModel.cpp \
                    ../../Classes/pubnative/model/PNModel.cpp \
                    ../../Classes/pubnative/model/PNNativeAdModel.cpp \
                    ../../Classes/pubnative/request/PNAdRequest.cpp \
                    ../../Classes/pubnative/request/PNAdRequestData.cpp \
-                   ../../Classes/pubnative/request/PNImageRequest.cpp \
                    ../../Classes/pubnative/request/PNNativeRequest.cpp
 ```
 
@@ -43,24 +61,19 @@ LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../Classes/pubnative/request
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../../extensions/CocoStudio/Json/rapidjson
 ```
 
+<a name='install_ios'></a>
+### iOS
+
+No further installation steps are necessary for iOS
+
+<a name='usage'></a>
 ## Usage
 
-### Include depending on target API
-
-You would need to import the needed classes for your request
-
-For native API request:
+* Include the needed classes for your request
 
 ```cpp
 #include "PNNativeRequest.h"
 #include "PNNativeAdModel.h"
-```
-
-For image API request:
-
-```cpp
-#include "PNImageRequest.h"
-#include "PNImageAdModel.h"
 ```
 
 All classes are described under the following namespace
@@ -69,9 +82,10 @@ All classes are described under the following namespace
 using namespace cocos2d::pubnative;
 ```
 
-### API Request
+<a name='usage_request'></a>
+### Request
 
-You need to create and fill a request for the native or image API. You could use `PNNativeRequest` or `PNImageRequest`, but the process is the same. 
+* Create and fill a request for the API using `PNNativeRequest` class.
 
 Remember that you should set URLParameters as described in the [pubnative wiki](https://pubnative.atlassian.net/wiki/display/PUB/API+Documentation#APIDocumentation-3.Request)
 
@@ -88,9 +102,10 @@ request->setReadyCallback(<CALLBACK_TARGET>, pubnative_callback_ready(<YOUR_CLAS
 request->requestAds();
 ```
 
-### Ad Load
+<a name='usage_load'></a>
+### Load
 
-You need to load manually each downloded ad, so you can control when the images are downloaded from the URL into `CCImage`. This step is the same for both requests `PNNativeRequest` or `PNImageRequest`.
+You need to load manually each downloded ad resources, so you can control when the images are downloaded from the URL into `CCImage`.
 
 **This will load the resouces from the model into Cocos2D types**
 
@@ -110,11 +125,11 @@ void YOUR_CLASS::REQUEST_READY_CALLBACK(cocos2d::pubnative::PNAdRequest *request
 }
 ```
 
-### Ad usage
+<a name='usage_use'></a>
+### Use 
 
-You would need to cast the model returned to your request model `PNNativeAdModel` or `PNImageAdModel`. 
-
-And once the ad has been shown, confirm the "impression" beacon.
+* Cast the returned object to your model `PNNativeAdModel` 
+* Confirm the impression beacon.
 
 ```cpp
 void YOUR_CLASS::AD_READY_CALLBACK(PNModel *model, bool success)
@@ -130,16 +145,20 @@ void YOUR_CLASS::AD_READY_CALLBACK(PNModel *model, bool success)
 }
 ```
 
+<a name='misc'></a>
 ## Misc
 
+<a name='misc_author'></a>
 ### Author
 
 David Martin [@cerberillo](http://www.github.com/cerberillo)
 
+<a name='misc_license'></a>
 ### License
 
 This code is distributed under the terms and conditions of the MIT license. 
 
+<a name='misc_contribution'></a>
 ### Contribution guidelines
 
 If you fix a bug you discovered or have development ideas, feel free to make a pull request.
